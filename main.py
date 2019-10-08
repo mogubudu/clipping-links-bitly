@@ -2,7 +2,15 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
-load_dotenv()
+
+
+user_token = os.getenv("BITLY_TOKEN")
+headers = {"Authorization": "Bearer {}".format(user_token)}
+user_url = "https://api-ssl.bitly.com/v4/user"
+bitlinks_url = "https://api-ssl.bitly.com/v4/bitlinks"
+bitlinks_summary_url = '''https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'''
+parser = create_parser()
+link = parser.parse_args()
 
 
 def create_parser():
@@ -13,13 +21,6 @@ def create_parser():
       ''')
     parser.add_argument('link', help='Нужно ввести ссылку')
     return parser
-
-user_token = os.getenv("BITLY_TOKEN")
-headers = {"Authorization": "Bearer {}".format(user_token)}
-
-user_url = "https://api-ssl.bitly.com/v4/user"
-bitlinks_url = "https://api-ssl.bitly.com/v4/bitlinks"
-bitlinks_summary_url = '''https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'''
 
 
 def create_bitlink(url):
@@ -35,7 +36,7 @@ def create_bitlink(url):
     if response.ok:
         return response.json()["id"]
     else:
-        return "Проверьте корректность вводимой ссылки"
+        return
 
 
 def count_clicks(bitlink):
@@ -57,10 +58,7 @@ def count_clicks(bitlink):
     if response.ok:
         return response.json()["total_clicks"]
     else:
-        return "Проверьте корректность вводимой ссылки"
-
-parser = create_parser()
-link = parser.parse_args()
+        return
 
 
 def check_link(link):
@@ -71,4 +69,5 @@ def check_link(link):
         return create_bitlink(link)
 
 if __name__ == "__main__":
+    load_dotenv()
     print(check_link(link))
