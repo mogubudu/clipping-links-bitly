@@ -26,7 +26,7 @@ def create_bitlink(url):
       "long_url": url
     }
 
-    response = requests.post(BITLINKS_URL, json=params, headers=HEADERS)
+    response = requests.post(bitlinks_url, json=params, headers={"Authorization": "Bearer {}".format(USER_TOKEN)})
     if response.ok:
         return response.json()["id"]
     else:
@@ -45,7 +45,7 @@ def count_clicks(bitlink):
 
     bitlinks_summ_url = BITLINKS_SUMMARY_URL.format(bitlink)
 
-    response = requests.get(bitlinks_summ_url, params=params, headers=HEADERS)
+    response = requests.get(bitlinks_summ_url, params=params, headers={"Authorization": "Bearer {}".format(USER_TOKEN)})
 
     if response.ok:
         return response.json()["total_clicks"]
