@@ -2,6 +2,7 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 load_dotenv()
 USER_TOKEN = os.getenv("BITLY_TOKEN")
