@@ -68,9 +68,6 @@ def get_count_click_or_create_link(link):
     else:
         return create_bitlink(link)
 
-if __name__ == "__main__":
-    load_dotenv()
-    USER_TOKEN = os.getenv("BITLY_TOKEN")
 def main():
     parser = create_parser()
     LINK = parser.parse_args()
