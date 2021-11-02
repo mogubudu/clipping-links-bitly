@@ -35,10 +35,6 @@ def create_bitlink(url):
 
 def count_clicks(bitlink):
 
-    if bitlink.startswith("https://"):
-        bitlink = bitlink[8:]
-    elif bitlink.startswith("http://"):
-        bitlink = bitlink[7:]
     bitlink = urlparse(bitlink)
     bitlink = f'{bitlink.netloc}{bitlink.path}'
 
