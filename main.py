@@ -34,6 +34,7 @@ def create_bitlink(url):
 
 
 def count_clicks(bitlink):
+    bitlinks_summary_url = '''https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'''
 
     bitlink = urlparse(bitlink)
     bitlink = f'{bitlink.netloc}{bitlink.path}'
@@ -43,7 +44,7 @@ def count_clicks(bitlink):
         "units": "-1"
     }
 
-    bitlinks_summ_url = BITLINKS_SUMMARY_URL.format(bitlink)
+    bitlinks_summ_url = bitlinks_summary_url.format(bitlink)
 
     response = requests.get(bitlinks_summ_url, params=params, headers={"Authorization": "Bearer {}".format(USER_TOKEN)})
 
