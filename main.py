@@ -39,6 +39,8 @@ def count_clicks(bitlink):
         bitlink = bitlink[8:]
     elif bitlink.startswith("http://"):
         bitlink = bitlink[7:]
+    bitlink = urlparse(bitlink)
+    bitlink = f'{bitlink.netloc}{bitlink.path}'
 
     params = {
         "unit": "day",
