@@ -17,10 +17,11 @@ def create_parser():
     return parser
 
 def create_bitlink(url):
-    if url.startswith("http://") or url.startswith("https://"):
-        url = url
-    else:
-        url = 'http://' + url
+    bitlinks_url = "https://api-ssl.bitly.com/v4/bitlinks"
+
+    if urlparse(url).scheme == '':
+        url = f'http://{url}'
+
     params = {
       "long_url": url
     }
