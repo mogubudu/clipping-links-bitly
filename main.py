@@ -3,11 +3,6 @@ import os
 import argparse
 from dotenv import load_dotenv
 
-HEADERS = {"Authorization": "Bearer {}".format(USER_TOKEN)}
-USER_URL = "https://api-ssl.bitly.com/v4/user"
-BITLINKS_URL = "https://api-ssl.bitly.com/v4/bitlinks"
-BITLINKS_SUMMARY_URL = '''https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'''
-
 load_dotenv()
 USER_TOKEN = os.getenv("BITLY_TOKEN")
 
