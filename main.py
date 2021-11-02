@@ -8,9 +8,11 @@ USER_URL = "https://api-ssl.bitly.com/v4/user"
 BITLINKS_URL = "https://api-ssl.bitly.com/v4/bitlinks"
 BITLINKS_SUMMARY_URL = '''https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'''
 
+load_dotenv()
+USER_TOKEN = os.getenv("BITLY_TOKEN")
 
 def create_parser():
-    PARSER = argparse.ArgumentParser(description='''
+    parser = argparse.ArgumentParser(description='''
       Программа получает на вход ссылку и сокращает её.
       Либо принимает сокращенную в bitlink ссылку
       и возвращает сумму кликов по ней.
@@ -69,4 +71,10 @@ def get_count_click_or_create_link(link):
 if __name__ == "__main__":
     load_dotenv()
     USER_TOKEN = os.getenv("BITLY_TOKEN")
+def main():
+    parser = create_parser()
+    LINK = parser.parse_args()
     print(get_count_click_or_create_link(LINK))
+
+if __name__ == "__main__":
+    main()
