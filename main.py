@@ -13,11 +13,8 @@ def create_parser():
       Либо принимает сокращенную в bitlink ссылку
       и возвращает сумму кликов по ней.
       ''')
-    PARSER.add_argument('link', help='Нужно ввести ссылку')
-    return PARSER
-
-PARSER = create_parser()
-LINK = PARSER.parse_args()
+    parser.add_argument('link', help='Нужно ввести ссылку')
+    return parser
 
 def create_bitlink(url):
     if url.startswith("http://") or url.startswith("https://"):
