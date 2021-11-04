@@ -40,8 +40,9 @@ def create_bitlink(url):
 
 
 def count_clicks(bitlink):
-    bitlinks_summary_url = '''https://api-ssl.bitly.com/v4/bitlinks/
-                            {}/clicks/summary'''
+    bitlinks_summary_url = (
+        'https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'
+        )
 
     bitlink = urlparse(bitlink)
     bitlink = f'{bitlink.netloc}{bitlink.path}'
