@@ -74,8 +74,8 @@ def get_count_click_or_create_link(link):
 
 def main():
     parser = create_parser()
-    LINK = parser.parse_args()
-    print(get_count_click_or_create_link(LINK))
+    link = parser.parse_args()
+    print(get_count_click_or_create_link(link))
 
 
 if __name__ == "__main__":
