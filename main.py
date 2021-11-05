@@ -35,8 +35,6 @@ def create_bitlink(url):
 
     if response.ok:
         return response.json()["id"]
-    else:
-        return
 
 
 def count_clicks(bitlink):
@@ -61,8 +59,6 @@ def count_clicks(bitlink):
 
     if response.ok:
         return response.json()["total_clicks"]
-    else:
-        return
 
 
 def get_count_click_or_create_link(link):
