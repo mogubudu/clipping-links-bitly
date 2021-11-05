@@ -21,7 +21,7 @@ def create_parser():
 def create_bitlink(url):
     bitlinks_url = "https://api-ssl.bitly.com/v4/bitlinks"
 
-    if urlparse(url).scheme == '':
+    if not urlparse(url).scheme:
         url = f'http://{url}'
 
     params = {
